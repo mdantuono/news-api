@@ -1,5 +1,4 @@
 /*global $ APIKEY*/
-var titles = [];
 var source;
 $(document).ready(function() {
     //GET DROPDOWN SOURCES 
@@ -11,11 +10,11 @@ $(document).ready(function() {
           console.log(data);
           if (data.status == "ok") {
               for (var i = 0; i < data.sources.length; i++) {
-                  source = document.createElement("OPTION");
+                  source = document.createElement("OPTION"); 
                   source.setAttribute("value", data.sources[i].id);
                   source.innerHTML = data.sources[i].name;
                   document.getElementById('selection').appendChild(source);
-              }
+              } 
           }
         }
     });
@@ -24,17 +23,19 @@ $(document).ready(function() {
     //     console.log(msg);
     //     console.log(msg.status);
     // };
-    $('#source').submit(function(event) {
+});
+$('#source').submit(function(event) {
         event.preventDefault();
+        console.log(document.getElementById('selection').value);
+        showMe();
         // alert(document.getElementById('selection').value);
     });
-});
 //GET HEADLINES TO SHOW
 function showMe() {
-    //CALL AND STORE HEADLINES IN A VARIABLE
-    console.log(source);
+    //RESET ARTICLES
+    document.getElementById('articleList').innerHTML = "";
     //BLOOMBERG
-    if (source.value == "bloomberg") {
+    if (document.getElementById('selection').value == "bloomberg") {
         $.ajax({
             method: "GET",
             url: "https://newsapi.org/v2/top-headlines",
@@ -42,13 +43,22 @@ function showMe() {
             success: function(stuff) {
                 console.log(stuff);
                 for (var i = 0; i < stuff.articles.length; i++) {
-                    titles.push(stuff.articles[i].title);
+                    var items = document.createElement("LI");
+                    var image = document.createElement("IMG");
+                    var anchor = document.createElement("a");
+                    document.getElementById("articleList").appendChild(items);
+                    anchor.href = stuff.articles[i].url;
+                    image.src = stuff.articles[i].urlToImage;
+                    anchor.innerHTML = stuff.articles[i].title + "<br>";
+                    items.innerHTML = stuff.articles[i].description;
+                    items.appendChild(anchor);
+                    items.appendChild(image);
                 }
             }
         });
     }
     //BUSINESS INSIDER
-    else if (source.value == "business-insider") {
+    else if (document.getElementById('selection').value == "business-insider") {
         $.ajax({
             method: "GET",
             url: "https://newsapi.org/v2/top-headlines",
@@ -56,13 +66,22 @@ function showMe() {
             success: function(stuff) {
                 console.log(stuff);
                 for (var i = 0; i < stuff.articles.length; i++) {
-                    titles.push(stuff.articles[i].title);
+                    var items = document.createElement("LI");
+                    var image = document.createElement("IMG");
+                    var anchor = document.createElement("a");
+                    document.getElementById("articleList").appendChild(items);
+                    anchor.href = stuff.articles[i].url;
+                    image.src = stuff.articles[i].urlToImage;
+                    anchor.innerHTML = stuff.articles[i].title + "<br>";
+                    items.innerHTML = stuff.articles[i].description;
+                    items.appendChild(anchor);
+                    items.appendChild(image);
                 }
             }
         });
     }
     //CNBC
-    else if (source.value == "cnbc") {
+    else if (document.getElementById('selection').value == "cnbc") {
         $.ajax({
             method: "GET",
             url: "https://newsapi.org/v2/top-headlines",
@@ -70,13 +89,22 @@ function showMe() {
             success: function(stuff) {
                 console.log(stuff);
                 for (var i = 0; i < stuff.articles.length; i++) {
-                    titles.push(stuff.articles[i].title);
+                    var items = document.createElement("LI");
+                    var image = document.createElement("IMG");
+                    var anchor = document.createElement("a");
+                    document.getElementById("articleList").appendChild(items);
+                    anchor.href = stuff.articles[i].url;
+                    image.src = stuff.articles[i].urlToImage;
+                    anchor.innerHTML = stuff.articles[i].title + "<br>";
+                    items.innerHTML = stuff.articles[i].description;
+                    items.appendChild(anchor);
+                    items.appendChild(image);
                 }
             }
         });
     }
     //FORTUNE
-    else if (source.value == "fortune") {
+    else if (document.getElementById('selection').value == "fortune") {
         $.ajax({
             method: "GET",
             url: "https://newsapi.org/v2/top-headlines",
@@ -84,13 +112,22 @@ function showMe() {
             success: function(stuff) {
                 console.log(stuff);
                 for (var i = 0; i < stuff.articles.length; i++) {
-                    titles.push(stuff.articles[i].title);
+                    var items = document.createElement("LI");
+                    var image = document.createElement("IMG");
+                    var anchor = document.createElement("a");
+                    document.getElementById("articleList").appendChild(items);
+                    anchor.href = stuff.articles[i].url;
+                    image.src = stuff.articles[i].urlToImage;
+                    anchor.innerHTML = stuff.articles[i].title + "<br>";
+                    items.innerHTML = stuff.articles[i].description;
+                    items.appendChild(anchor);
+                    items.appendChild(image);
                 }
             }
         });
     }
     //THE WALL STREET JOURNAL
-    else if (source.value == "the-wall-street-journal") {
+    else if (document.getElementById('selection').value == "the-wall-street-journal") {
         $.ajax({
             method: "GET",
             url: "https://newsapi.org/v2/top-headlines",
@@ -98,15 +135,18 @@ function showMe() {
             success: function(stuff) {
                 console.log(stuff);
                 for (var i = 0; i < stuff.articles.length; i++) {
-                    titles.push(stuff.articles[i].title);
+                    var items = document.createElement("LI");
+                    var image = document.createElement("IMG");
+                    var anchor = document.createElement("a");
+                    document.getElementById("articleList").appendChild(items);
+                    anchor.href = stuff.articles[i].url;
+                    image.src = stuff.articles[i].urlToImage;
+                    anchor.innerHTML = stuff.articles[i].title + "<br>";
+                    items.innerHTML = stuff.articles[i].description;
+                    items.appendChild(anchor);
+                    items.appendChild(image);
                 }
             }
-        });
+        }); 
     }
-    // console.log(titles);
-    // for (var i = 0; i < titles.length; i++) {
-    //     var items = document.createElement("LI");
-    //     items.innerHTML = titles[i];
-    //     document.getElementById("articleList").appendChild(items);
-    // }
 }
