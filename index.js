@@ -43,13 +43,13 @@ function showMe() {
             success: function(stuff) {
                 console.log(stuff);
                 for (var i = 0; i < stuff.articles.length; i++) {
+                    var anchor = document.createElement("a");
                     var items = document.createElement("LI");
                     var image = document.createElement("IMG");
-                    var anchor = document.createElement("a");
                     document.getElementById("articleList").appendChild(items);
                     anchor.href = stuff.articles[i].url;
-                    image.src = stuff.articles[i].urlToImage;
                     anchor.innerHTML = stuff.articles[i].title + "<br>";
+                    image.src = stuff.articles[i].urlToImage;
                     items.innerHTML = stuff.articles[i].description;
                     items.appendChild(anchor);
                     items.appendChild(image);
