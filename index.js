@@ -39,7 +39,7 @@ function showMe() {
         $.ajax({
             method: "GET",
             url: "https://newsapi.org/v2/top-headlines",
-            data: { sources:"bloomberg", category:"business", country:"us", language:"en", apiKey: APIKEY},
+            data: { sources:"bloomberg", apiKey: APIKEY},
             success: function(stuff) {
                 console.log(stuff);
                 for (var i = 0; i < stuff.articles.length; i++) {
@@ -62,7 +62,7 @@ function showMe() {
         $.ajax({
             method: "GET",
             url: "https://newsapi.org/v2/top-headlines",
-            data: { sources:"business-insider", category:"business", country:"us", language:"en", apiKey: APIKEY},
+            data: { sources:"business-insider", apiKey: APIKEY},
             success: function(stuff) {
                 console.log(stuff);
                 for (var i = 0; i < stuff.articles.length; i++) {
@@ -85,7 +85,7 @@ function showMe() {
         $.ajax({
             method: "GET",
             url: "https://newsapi.org/v2/top-headlines",
-            data: { sources:"cnbc", category:"business", country:"us", language:"en", apiKey: APIKEY},
+            data: { sources:"cnbc", apiKey: APIKEY},
             success: function(stuff) {
                 console.log(stuff);
                 for (var i = 0; i < stuff.articles.length; i++) {
@@ -108,7 +108,7 @@ function showMe() {
         $.ajax({
             method: "GET",
             url: "https://newsapi.org/v2/top-headlines",
-            data: { sources:"fortune", category:"business", country:"us", language:"en", apiKey: APIKEY},
+            data: { sources:"fortune", apiKey: APIKEY},
             success: function(stuff) {
                 console.log(stuff);
                 for (var i = 0; i < stuff.articles.length; i++) {
@@ -131,7 +131,7 @@ function showMe() {
         $.ajax({
             method: "GET",
             url: "https://newsapi.org/v2/top-headlines",
-            data: { sources:"the-wall-street-journal", category:"business", country:"us", language:"en", apiKey: APIKEY},
+            data: { sources:"the-wall-street-journal", apiKey: APIKEY},
             success: function(stuff) {
                 console.log(stuff);
                 for (var i = 0; i < stuff.articles.length; i++) {
